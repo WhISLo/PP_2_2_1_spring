@@ -19,8 +19,10 @@ public class User {
    @Column(name = "email")
    private String email;
 
-   public User() {}
-   
+
+   public User() {
+   }
+
    public User(String firstName, String lastName, String email) {
       this.firstName = firstName;
       this.lastName = lastName;
@@ -58,4 +60,18 @@ public class User {
    public void setEmail(String email) {
       this.email = email;
    }
+
+   @OneToOne(cascade = CascadeType.ALL)
+   @JoinColumn(name = "car_id", referencedColumnName = "id")
+   private Car car;
+
+   // Геттеры и сеттеры для car
+   public Car getCar() {
+      return car;
+   }
+
+   public void setCar(Car car) {
+      this.car = car;
+   }
+
 }
